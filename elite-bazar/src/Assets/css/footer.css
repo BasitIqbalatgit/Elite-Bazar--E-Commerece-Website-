@@ -1,0 +1,89 @@
+.footerContainer {
+    width: 100%;
+    height: 50vh;
+    background-color: #e9e7e7;
+    
+    /* background-color: #f7fafa; */
+}
+
+.footerGrid {
+    /* width: 100%; */
+    /* height: 100%; */
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerColumn {
+    /* border: 1px solid black; */
+    overflow: hidden;
+    padding: 0.3rem;
+    width: 30%;
+    border-top: black 1px solid;
+    /* padding: 1rem; */
+}
+
+.columnList {
+    margin-top: 0.5rem;
+    list-style: none;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    
+}
+
+.listItemColumn {
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    width: fit-content;
+}
+
+.listItemColumn:hover {
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+.columnTitle{
+    font-size: 18px;
+}
+.signUpText{
+    margin-top: 0.5rem;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.subscribeContainer{
+    display: flex;
+    margin-top: 0.5rem;
+}
+.emailInput{
+    flex: 3;
+    padding: 8px;
+    border: 1px solid black;
+    border-right: none;
+}
+.btnSubscribe{
+    flex: 1;
+    padding: 8px 16px;
+    background-color: black;
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+    border: 1px solid transparent;
+    
+}
+.btnSubscribe:hover{
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+}
+.copyright{
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 16px;
+}
