@@ -53,7 +53,8 @@
     width: 100vw;
     height: 100vh;
     background-color: #282a2c;
-    border-radius: 1.5rem;
+    border-top-left-radius:2rem;
+    border-top-right-radius:2rem;
     display: felx;
     flex-direction: column;
 
@@ -94,15 +95,16 @@
 .cart-name-div{
     display: flex;
     flex-direction: column;    
-    gap: 0.5rem;
+    /* gap: 0.5rem; */
 
 }
 
 .cart-name-p{
-    font-size: 1rem;
-  line-height: 1.5;
+    /* font-size: 1rem;
+  line-height: 1; */
     color: rgb(221, 217, 217);
-    margin-top: 0.5rem;
+    /* margin-top: 0.19rem; */
+    margin-bottom: 0.1rem;
    
 }
 .cart-name-p2{

@@ -4,29 +4,32 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import videoBackground from '../../Assets/img/background.mp4';
+import { useStateValue } from '../../context/StateProvider';
 
-const LoginForm = ({user}) => {
+const LoginForm = () => {
 
-    // const [user,setUser]=useState([
-    //     {uId:1,fName:"Basit",lName:"Iqbal",email:'basit.sardar.comsian@gmail.com',password:"123"}
-    // ]);
+    const [{user}, dispatch]= useStateValue();
     const Refpassword = useRef();
 
     const Refemail = useRef();
 
     const navigate = useNavigate();
-    const handleNavigation=()=>{
-
+    const handleNavigation=(e)=>{
+            e.preventDefault();
         if(Refemail.current.value==='basit.sardar.comsian@gmail.com'&&Refpassword.current.value==='123'){
-        navigate('/');
-
-    }
-    console.log(Refemail);
-    console.log(Refpassword);
+        navigate('/dashboard/*');
+        }
+        else if(Refemail.current.value===user[1] && Refpassword.current.value===user[2] ){
+            navigate('/')
+        }
+    // console.log(Refemail);
+    // console.log(Refpassword);
     }
     
+
    
     useEffect(()=>{
+        // console.log(user[1], user[2])
         Refemail.current.focus();
     },[])
 
@@ -38,19 +41,19 @@ const LoginForm = ({user}) => {
       </video>
         <div className='login-div'>
             <h2 className='mb-3 '>Login</h2>
-            <form className='needs-validation'>
+            <form id="loginForm" className='needs-validation' onSubmit={e=>{handleNavigation(e)}}>
             
             
             <div className='form-group was-validated mb-2'>
                 <label htmlFor='email' className='form-label'>Email Address</label>
-                <input type="email"  className='form-control' required ref={Refemail}/>
+                <input name='email' type="email"  className='form-control' required ref={Refemail}/>
                 <div className='invalid-feedback'>
                     Please Enter Your Email
                 </div>
             </div>
             <div className="form-group was-validated  mb-2">
                 <label htmlFor='password'  className='form-label'>Password</label>
-                <input type="password" className='form-control' required ref={Refpassword}/>
+                <input name='password' type="password" className='form-control' required ref={Refpassword}/>
                 <div className='invalid-feedback' >
                     Please Enter Your Password
                 </div>
@@ -60,7 +63,7 @@ const LoginForm = ({user}) => {
                 <label htmlFor='check' className='form-check-label'>Remember me</label>
             </div>
            
-            <button type="submit" className='btn btn-success w-100 mt-2' onClick={handleNavigation}>SIGN IN</button>
+            <button  type="Submit" className='btn btn-success w-100 mt-2'>SIGN IN</button>
             
             <div className="form-group form-check mb-2 pad">
                 <label htmlFor='check' className='form-check-label'>Don't have an Account ? 

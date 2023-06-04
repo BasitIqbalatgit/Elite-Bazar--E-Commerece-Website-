@@ -24,8 +24,8 @@ const DBheader=()=>{
 
                 <motion.img 
          whileTap={{scale: 0.6}}
-         src={Avatar} className="user" alt="userprofile" data-bs-toggle="dropdown"/> 
-          <Link to="/login">  <MdLogout className="search-icon-dh" style={{fontSize:"2rem"}}/></Link>
+         src={Avatar} className="user" alt="userprofile" /> 
+        <Link to='/login' > <MdLogout className="search-icon-dh" style={{fontSize:"2rem"}}/></Link>
             </div>
 
             

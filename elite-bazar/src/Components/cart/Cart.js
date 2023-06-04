@@ -1,25 +1,58 @@
 import { MdOutlineKeyboardBackspace, MdRemove } from "react-icons/md";
 import "../../Assets/css/cart.css";
 import React from "react";
-import f1 from "../../Assets/img/f1.png";
+import EmptyCart from "../../Assets/img/emptyCart.svg";
 import {motion} from "framer-motion";
 import {MdRefresh} from 'react-icons/md';
-import {FaPlus} from 'react-icons/fa'
 import { useStateValue } from "../../context/StateProvider";
 import { actionType } from "../../context/reducer";
-import { initialState } from "../../context/initialState";
+import CartItems from "./CartItems";
+import { useState, useEffect } from "react";
+import { useMemo } from "react";
+import { Link } from "react-router-dom";
+
 const Cart=()=>{
 
-const[{cartShow,cartItems},dispatch]= useStateValue();
+    const [{ cartShow, cartItems, user }, dispatch] = useStateValue();
+    
+    const [flag, setFlag] = useState(1);
+    const [tot, setTot] = useState(0);
+    // console.log("Items in teh CARRT : ",cartItems);
+    const showCart = () => {
+      dispatch({
+        type: actionType.SET_CART_SHOW,
+        cartShow: !cartShow,
+      });
+    };
+  
+    const totalPrice = useMemo(()=>{
+        let totalPrice=0;
+        cartItems.forEach(item => {
+            totalPrice +=item.qty * item.price;
+        });
+        return totalPrice;
+    }, [tot,flag])
+    useEffect(()=>{
+        setTot(totalPrice);
+    },[totalPrice])
+    // useEffect(() => {
+    //   let totalPrice = cartItems.reduce(function (accumulator, item) {
+    //     return accumulator + item.qty * item.price;
+    //   }, 0);
+      
 
-
-
-const handleBack=()=>{
-    dispatch({
-        type:actionType.SET_CART_SHOW,
-        cartShow:!cartShow
-    })
-}
+    //   setTot(totalPrice);
+    //   console.log(tot +" in use Effect nand total is : " + totalPrice);
+    // }, [flag]);
+  
+    const clearCart = () => {
+      dispatch({
+        type: actionType.SET_CART_ITEMS,
+        cartItems: [],
+      });
+  
+      };
+  
 
     return(
     <motion.div
@@ -30,59 +63,53 @@ const handleBack=()=>{
     className="main-cart-div">
         <div className="back-option-div" >
             <motion.div
-            onClick={handleBack}
+            onClick={showCart}
             whileTap={{scale:0.75}}
             ><MdOutlineKeyboardBackspace style={{color:"#2e2e2e", fontSize:'2rem'}}/>
            </motion.div>
 
            <p id="cart-cart">Cart</p>
-            <motion.p whileTap={{scale:0.75}} id="clear-cart" onClick={()=>dispatch({
-                type:actionType.SET_CART_ITEMS, cartItems:initialState.cartItems
-            })}>Clear<MdRefresh /></motion.p>         
+           <motion.p onClick={clearCart} whileTap={{ scale: 0.75 }} id="clear-cart">
+  Clear<MdRefresh />
+</motion.p>
+       
             
         </div>
 {/* bottom section */}
-        <div className="bottom-section-cart">
+{cartItems && cartItems.length > 0 ?(<div className="bottom-section-cart">
             <div className="sub-bottom-cart">
-                
+                {/* {console.log("cartItems are: " + cartItems)} */}
                 {/* cart items */}
-                <div id="cart-items-cart">
-                    <img className="cart-img" src={f1} alt="img" /> 
-                    {/* name Section */}
-                    <div className="cart-name-div">
-                        <p className="cart-name-p">strawberry </p>
-                        <p className="cart-name-p2">$8.5</p>
-                    </div>
-
-                    {/* button section */}
-                    
-                    <div className="button-section-div">
-                       <motion.div whileTap={{scale: 0.75}}>
-                            <MdRemove style={{ color: "rgb(221, 217, 217)",fontSize:"1rem"}}/>
-                       </motion.div>
-                       <p style={{width:"1.25rem", height:"1.25rem",backgroundColor:"#282a2c" ,borderRadius:"0.125rem", color: "rgb(221, 217, 217)", display:"flex", alignItems:"items-center", justifyContent:"center", marginTop:"1.25rem"}}> 1 </p>
-                       <motion.div whileTap={{scale: 0.75}}>
-                            <FaPlus style={{ color: "rgb(221, 217, 217)", fontSize:"0.75rem"}}/>
-                       </motion.div>
-                     </div>
-                </div>
+                {cartItems &&
+              cartItems.length > 0 &&
+              cartItems.map((item) => (
+                <CartItems
+                  key={item.id}
+                  item={item}
+                  setFlag={setFlag}
+                  flag={flag}
+                />
+              ))}
             </div>
+            
+{/* {console.log("in eh bo in car.js" + tot)} */}
             {/* cart total section */}
             <div id="cart-total-div">
                     <div style={{width:"100%", display:"flex", alignItems:"center", justifyContent:"space-between"}}>
                             <p style={{color:"rgb(148, 147, 147)", fontSize:"large"}}> Sub Total</p>
-                            <p style={{color:"rgb(148, 147, 147)", fontSize:"large"}}>$ 8.5</p>
+                            <p style={{color:"rgb(148, 147, 147)", fontSize:"large"}}>$ {tot}</p>
                     </div>
                     <div style={{width:"100%", display:"flex", alignItems:"center", justifyContent:"space-between"}}>
                             <p style={{color:"rgb(148, 147, 147)", fontSize:"large"}}> Delivery</p>
-                            <p style={{color:"rgb(148, 147, 147)", fontSize:"large"}}>$ 8.5</p>
+                            <p style={{color:"rgb(148, 147, 147)", fontSize:"large"}}>$ 2.5</p>
                     </div>
                     <div style={{width:"100%", backgroundColor:"#718096",borderBottomWidth: "4rem", borderColor: "red", marginTop:"0.5rem", marginBottom:"0.5rem", height:"0.25rem"}}></div>
 
                     <div style={{width:"100%", display:"flex", alignItems:"center", justifyContent:"space-between"}}>
                         <p style={{ color: "#e2e8f0", fontSize:"larger", fontWeight:"600"}}>Total</p>
-                        <p style={{ color: "#e2e8f0", fontSize:"larger", fontWeight:"600"}}>$ 11.5</p>
+                        <p style={{ color: "#e2e8f0", fontSize:"larger", fontWeight:"600"}}>$ {tot + 2.5}</p>
                     </div>
+                    <Link to='/cartContainer'>
                     <motion.button
                     whileTap={{scale:0.8}}
                     type="button"
@@ -90,8 +117,19 @@ const handleBack=()=>{
                     >
                             Check Out
                     </motion.button>
+                    </Link>
             </div>
         </div>
+
+): (
+    <div style={{width:"100%", height:"100%",  borderTopLeftRadius:"2rem",borderTopRightRadius:"2rem", display:"flex", flexDirection:"column",alignItems:"center", justifyContent:"center", gap:"1.5rem"}}>
+        <img src={EmptyCart} style={{width:"20rem"}} />
+        <p style={{fontSize:"larger", color:"#515151", fontWeight:"600"}}>
+            Add some items to your cart
+        </p>
+    </div>
+)}
+        
         </motion.div>)
 }
 export default Cart;
