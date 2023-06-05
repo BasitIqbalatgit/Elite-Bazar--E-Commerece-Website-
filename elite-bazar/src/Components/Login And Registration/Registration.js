@@ -12,9 +12,9 @@ import { actionType } from '../../context/reducer';
 const Registration = () => {
      const RefEmail = useRef();
      const RefPassword= useRef();
-     const RefUserName = useRef();
+     
+const RefUserName = useRef();
 const [{user},dispatch]= useStateValue();
-
 const nav= useNavigate();
 
 const handleNavigation=(e)=>{
@@ -32,6 +32,8 @@ const handleNavigation=(e)=>{
 useEffect(()=>{
     RefUserName.current.focus();
 },[])
+
+
   return (
     <div className='wrapper '>
          <video autoPlay loop muted className="video-background">

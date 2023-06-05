@@ -32,6 +32,8 @@ const Cart=()=>{
         });
         return totalPrice;
     }, [tot,flag])
+
+    
     useEffect(()=>{
         setTot(totalPrice);
     },[totalPrice])

@@ -27,44 +27,16 @@ function App() {
         
 
         <main id="main">
-          {/* <CartContainer /> */}
           <Routes>
-            <Route path="/*" element={<MainContainer  />} />
-            
-            
-              <Route
-              path="/login"
-              element={<LoginForm />}
-            />
-            <Route
-              path="/register"
-              element={<Registration />}
-            />
-            
-            <Route
-              path="/cartContainer"
-              element={<CartContainer />}
-            />
-            <Route
-              path="/payment"
-              element={<PaymentPage />}
-            />
-            <Route
-              path="/about"
-              element={<AboutUs  />}
-            />
-             <Route
-              path="/menu"
-              element={<VegBox flag={false} />}
-            />
-
-            <Route 
-            path="/services"
-            element={<Services />}/>
-
-
-            <Route path={"/dashboard/*"} element={<Dashboard />} />
-            
+              <Route path="/*" element={<MainContainer  />} />
+              <Route path="/login" element={<LoginForm />} />
+              <Route path="/register" element={<Registration />} />            
+              <Route path="/cartContainer" element={<CartContainer />} />
+              <Route path="/payment" element={<PaymentPage />} />
+              <Route path="/about" element={<AboutUs  />}/>
+              <Route path="/menu" element={<VegBox flag={false} />} /> 
+              <Route path="/services" element={<Services />}/> 
+              <Route path={"/dashboard/*"} element={<Dashboard />} />
 
           </Routes>
         </main>

@@ -41,9 +41,9 @@ const handleCartItems=(fruit)=>{
             data.map(fruit=>(
                 <div key={fruit?.id} className="inner-div" >
                 <div style={{width:"100%",display:"flex", alignItems:"center", justifyContent:"space-between"}}>
-                    {/* <Link to="/detail"  state={{from:fruit}} > */}
+                    
                    <motion.img whileHover={{ scale : 1.2}} style={{width:"10rem", height:"7rem",marginTop:"1.5rem"}} src={fruit?.imageSrc} alt="img" />
-                   {/* </Link> */}
+                   
                    <motion.div whileTap={{scale:0.75}}  style={{width:"2.5rem",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center", height:"2.5rem", borderRadius:"50%", backgroundColor:"red" }} onClick={()=>handleCartItems(fruit)}>
                     <MdShoppingBasket style={{color:"white",}} />
                    </motion.div>

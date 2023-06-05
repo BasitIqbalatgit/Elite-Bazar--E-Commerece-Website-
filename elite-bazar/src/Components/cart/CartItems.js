@@ -33,7 +33,9 @@ const CartItems = ({ item, setFlag, flag}) => {
       } else {
         // initial state value is one so you need to check if 1 then remove it
         if (qty == 1) {
+
           items = cartItems.filter((item) => item.id !== id);
+          
           setFlag(flag + 1);
           cartDispatch();
         } else {

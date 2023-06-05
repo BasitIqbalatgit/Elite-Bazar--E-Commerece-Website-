@@ -8,11 +8,12 @@ import { useStateValue } from '../../context/StateProvider';
 
 const LoginForm = () => {
 
+
+
+
     const [{user}, dispatch]= useStateValue();
     const Refpassword = useRef();
-
     const Refemail = useRef();
-
     const navigate = useNavigate();
     const handleNavigation=(e)=>{
             e.preventDefault();
@@ -22,14 +23,11 @@ const LoginForm = () => {
         else if(Refemail.current.value===user[1] && Refpassword.current.value===user[2] ){
             navigate('/')
         }
-    // console.log(Refemail);
-    // console.log(Refpassword);
     }
     
 
    
     useEffect(()=>{
-        // console.log(user[1], user[2])
         Refemail.current.focus();
     },[])
 

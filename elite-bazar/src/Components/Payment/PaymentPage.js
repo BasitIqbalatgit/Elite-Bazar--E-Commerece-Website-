@@ -16,9 +16,9 @@ const PaymentPage = () => {
   const [{user},dispatch] = useStateValue();
   return (
     <div>
-   <Header />
+   
     <div className="container">
- 
+    <Header />
     <form id="payment-form" onSubmit={handleSubmit}>
 
         <div className="row">
