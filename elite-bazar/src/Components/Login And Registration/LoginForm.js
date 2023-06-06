@@ -23,6 +23,9 @@ const LoginForm = () => {
         else if(Refemail.current.value===user[1] && Refpassword.current.value===user[2] ){
             navigate('/')
         }
+        else{
+            navigate('/')
+        }
     }
     
 

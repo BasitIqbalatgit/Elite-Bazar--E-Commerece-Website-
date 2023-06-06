@@ -41,7 +41,7 @@ const DBNewItem=()=>{
             if(name=="uploadimage")
             {
                 setIsLoading(true);
-                const imagefile=e.target.file[0];
+                const imagefile=e.target.files[0];
                 console.log(imagefile)
             }
 
