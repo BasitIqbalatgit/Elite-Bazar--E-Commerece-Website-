@@ -4,7 +4,8 @@ import {motion} from "framer-motion";
 import { MdChevronLeft,MdChevronRight } from "react-icons/md";
 import RowContainer from "./RowContainer";
 import { useEffect, useRef, useState } from "react";
-import { Items } from "../../utils/data";
+// import { Items } from "../../utils/data";
+import axios from "axios";
 import Cart from "../cart/Cart";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -13,12 +14,19 @@ import { useStateValue } from "../../context/StateProvider";
 
 const MainContainer=()=>{
     const [{cartShow,products}, dispatch] = useStateValue();
+    const [Items, setItems]=useState([]);
     
      useEffect(()=>{
+        
+
+axios.get("http://localhost:5000/product").then((res)=>{
+   setItems(res.data);
+   console.log(res.data);
+})
             dispatch({type:actionType.SET_PRODUCTS,
                 products:Items
             });
-            console.log(products);
+           
      },[])
 
     
@@ -50,7 +58,7 @@ const MainContainer=()=>{
                         <motion.div whileTap={{scale:0.75}} className="icon-cnt b2" onClick={()=>setScrollValue(scrollValue+200)}><MdChevronRight className="chev-icon"/></motion.div>
                     </div>
                 </div>
-                <RowContainer scrollValue={scrollValue} data={products.filter(e=>(e.popular===true&&e.name==='vegitable'))} flag={true}/>
+                <RowContainer scrollValue={scrollValue} data={Items.filter(e=>(e.popular===true&&e.name==='vegitable'))} flag={true}/>
             </section>
             { (cartShow) && (<Cart />)}
             

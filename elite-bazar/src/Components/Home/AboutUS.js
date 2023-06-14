@@ -5,10 +5,14 @@ import Header from './Header';
 import bk1 from "../../Assets/img/background1.png";
 import bk2 from "../../Assets/img/frBasket.png";
 import bk3 from "../../Assets/img/vegHerb.png";
-
+import Cart from '../cart/Cart';
 import f3 from "../../Assets/img/f3.png";
 const AboutUs = () => {
+
+
+
   return (
+    
     <div>
         <Header />
         <div style={{display:"flex"}}>

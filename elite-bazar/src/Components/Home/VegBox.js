@@ -1,7 +1,8 @@
 import { MdOutlineShoppingBasket } from "react-icons/md";
 import React from "react";
 import "../../Assets/css/vegBox.css";
-import { Items } from "../../utils/data";
+// import { Items } from "../../utils/data";
+import axios from "axios";
 import { useState } from "react";
 import RowContainer from "./RowContainer";
 import Header from "./Header";
@@ -15,15 +16,25 @@ import Footer from "./Footer";
 const VegBox=()=>{
     
 const [filter, setFitler] = useState('vegitable');
+const [Items,setItems] = useState([]);
+
 const categories = [
     {id:1, name:'Fruit'}, 
     {id:2, name:"vegitable"}];
         const [{products, cartShow}, dispatch] = useStateValue();
-        useEffect(()=>{
+        useEffect(()=>async()=>{
+            try{
+                const res= await axios.get("http://localhost:5000/product")
+                console.log(res.data);
+                setItems(res.data)
+            }catch(e){
+console.log("Error in veg ",e)
+            }
+           
             dispatch({type:actionType.SET_PRODUCTS,
                 products:Items
             });
-            console.log(products);
+            console.log(Items);
      },[])
 
     return(

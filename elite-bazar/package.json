@@ -2,11 +2,14 @@
   "name": "elite-bazar",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@coreui/react-chartjs": "^2.1.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/react": "^18.2.8",
+    "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "framer-motion": "^10.12.16",
     "react": "^18.2.0",
@@ -16,6 +19,7 @@
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
     "react-typewriter-effect": "^1.1.0",
+    "typewriter-effect": "^2.20.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

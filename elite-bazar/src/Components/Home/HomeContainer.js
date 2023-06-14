@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import TypeWriterEffect from "react-typewriter-effect";
 import { Link } from "react-router-dom";
 
+import Typewriter from 'typewriter-effect/dist/core';
 const HomeContainer = () => {
   
    
@@ -23,9 +24,7 @@ const HomeContainer = () => {
                 ['Fruit', 'Vegitable']
             } multiTextDelay={1000} typeSpeed={50} multiTextLoop/>
             </span></p>
-        
-        <p id="delivery-paragraph">The FALSH is on delivery having an Unmatched Speed ONLY for Your Deliveries. Quick, Reliable, and Efficient Service. Say Goodbye to Waiting. Experience Lightning-Fast Deliveries Today!
-        </p>
+
 
       <Link to="/menu">  <button type="button" id="order-btn">Order Now</button></Link>
       </div>
