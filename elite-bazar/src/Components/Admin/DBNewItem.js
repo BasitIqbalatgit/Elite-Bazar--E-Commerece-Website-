@@ -25,10 +25,18 @@ const DBNewItem=()=>{
         category:"",
         imageAsset:"",
       });
-      const { addProduct, setNewAddProduct, dispatch } = useStateValue();
-  
+    //   const { addProduct, setNewAddProduct, dispatch } = useStateValue();
+      
     const dangerClass = alertStatus === 'danger' ? 'danger danger-bg' : 'danger safe-bg';
 
+    const [product,setProduct] = useState({
+        name: "",
+        qty:1 ,
+        popular:"",
+         decp:String,
+         price:Number,
+         stock:Number,
+    });
 
     const handleChange=(e)=>{
             const{name,value}=e.target;
@@ -49,7 +57,7 @@ const DBNewItem=()=>{
 
     const saveDetails=(e)=>{
         e.preventDefault();
-        setNewAddProduct([...addProduct, { ...inputData }]);
+        // setNewAddProduct([...addProduct, { ...inputData }]);
       setInputData({
         title:"",
         price:"",
@@ -57,6 +65,9 @@ const DBNewItem=()=>{
         imageAsset:"",
       });
     };
+
+
+        
 
     return(
 
@@ -117,6 +128,12 @@ const DBNewItem=()=>{
             <div className="price-cnt1">
                 <MdAttachMoney style={{ fontSize: "1.75rem" ,color: "#4a5568" }}/>
                 <input name="price" type="number" onChange={handleChange} required value={inputData.price} placeholder="Price" id="price" />
+                
+        
+            </div>
+            <div className="price-cnt1">
+                <MdAttachMoney style={{ fontSize: "1.75rem" ,color: "#4a5568" }}/>
+                <input name="price" type="number" onChange={handleChange} required value={inputData.price} placeholder="Stock" id="price" />
                 
         
             </div>

@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const apiKey= "mongodb+srv://basitiqbal:12345@elite.kpmedmv.mongodb.net/?retryWrites=true&w=majority"
+dotenv.config();//
 
-export const connection= mongoose.connect(apiKey, {useUnifiedTopology: true, useNewUrlParser: true});
+const dbURL = process.env.Mongo_URL;
+
+export const connection= mongoose.connect(dbURL, {useUnifiedTopology: true, useNewUrlParser: true});
