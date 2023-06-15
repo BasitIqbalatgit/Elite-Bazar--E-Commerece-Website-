@@ -11,10 +11,9 @@ const productSchema=mongoose.Schema(
         } ,
         popular: {
             type: Boolean,
-            required: true,
             default: false,
           },
-         decp:String,
+         category:String,
          price:Number,
          stock:Number,
     }

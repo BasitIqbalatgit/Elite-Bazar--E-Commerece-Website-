@@ -51,7 +51,7 @@ const handleCartItems=(fruit)=>{
                
                 <div style={{width:"100%", display:"flex", alignItems:"end",justifyContent:"end", flexDirection:"column"}}>
                     <p style={{color:"#515151", fontWeight:"600",fontSize:"1.5rem" }}>
-                        {fruit?.decp}</p>
+                        {fruit?.category}</p>
                     <div style={{display:"flex", alignItems:"center", gap:"2rem"}}>
                         <p style={{fontSize:"large", color:"#515151", fontWeight:"700"}}>
                             <span style={{fontSize:"small", color:"#EF4444"}}>$</span>

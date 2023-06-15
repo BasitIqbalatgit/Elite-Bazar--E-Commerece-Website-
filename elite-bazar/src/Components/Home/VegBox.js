@@ -57,7 +57,7 @@ console.log("Error in veg ",e)
             </div>
             <div style={{width:"100vw"}}>
                     <RowContainer flag={false} 
-                    data={products.filter((n)=> n.name === filter)}
+                    data={products.filter((n)=> n.category === filter)}
                     
                     />
                 </div>

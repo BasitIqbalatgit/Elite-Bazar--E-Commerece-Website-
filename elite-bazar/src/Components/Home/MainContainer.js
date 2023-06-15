@@ -23,9 +23,9 @@ axios.get("http://localhost:5000/product").then((res)=>{
    setItems(res.data);
    console.log(res.data);
 })
-            dispatch({type:actionType.SET_PRODUCTS,
-                products:Items
-            });
+            // dispatch({type:actionType.SET_PRODUCTS,
+            //     products:Items
+            // });
            
      },[])
 
@@ -48,7 +48,7 @@ axios.get("http://localhost:5000/product").then((res)=>{
                         <motion.div whileTap={{scale:0.75}} className="icon-cnt" onClick={()=>setScrollValue(scrollValue+200)}><MdChevronRight className="chev-icon"/></motion.div>
                     </div>
                 </div>
-                <RowContainer scrollValue={scrollValue} data={products.filter(e=>(e.popular===true && e.name==='Fruit'))} flag={true}/>
+                <RowContainer scrollValue={scrollValue} data={Items.filter(e=>(e.popular===true && e.name==='Fruit'))} flag={true}/>
 
                 <div className="first-div">
                     <p className="para-tag">Our Popular Vegies</p>

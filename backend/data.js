@@ -213,11 +213,11 @@
 
 
 export const Items=[
-    {id:1,name:"Fruit",qty:1 ,popular:false, decp:"Strawberries",price:'10.25'},
-    {id:2,name:"Fruit",qty:1, popular:false, decp:"Pine-Apples",price:'15.25'},
-    {id:3,name:"Fruit",qty:1, popular:false, decp:"Blue-Berries",price:'12.5'},
-    {id:4,name:"Fruit",qty:1, popular:false,  decp:"Grapes",price:'13.5'},
-    {id:5,name:"Fruit",qty:1, popular:true, decp:" StrawBerries ",price:'5.5'},
+    {id:1,name:"Fruit",qty:1 ,popular:false, category:"Strawberries",price:'10.25'},
+    {id:2,name:"Fruit",qty:1, popular:false, category:"Pine-Apples",price:'15.25'},
+    {id:3,name:"Fruit",qty:1, popular:false, category:"Blue-Berries",price:'12.5'},
+    {id:4,name:"Fruit",qty:1, popular:false,  category:"Grapes",price:'13.5'},
+    {id:5,name:"Fruit",qty:1, popular:true, category:" StrawBerries ",price:'5.5'},
    {id:6,name:"Fruit",qty:1, popular:true, decp:"Pomegranate",price:'19.25'},
     {id:7,name:"Fruit",qty:1, popular:true, decp:"Red-Berries",price:'35.25'},
     {id:8,name:"Fruit",qty:1, popular:true, decp:"Berry",price:'25.5'},
