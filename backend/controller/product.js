@@ -2,7 +2,7 @@ import { Items } from "../data.js";
 import { productModel } from "../model/productModel.js";
 
 
-export const getProducts = async (req,res)=>{
+export const getProduct = async (req,res)=>{
     try{
        const Items =await productModel.find() 
        console.log(Items);
@@ -37,6 +37,13 @@ export const postProduct = async (req,res)=>{
     catch(e){
         console.log("Error during saving the item is : ",e);
     }
-
 }
+
+
+
+
+
+export const putProduct=()=>{}
+
+export const deleteProduct=()=>{}
 
