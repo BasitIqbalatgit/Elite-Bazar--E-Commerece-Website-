@@ -1,37 +1,43 @@
-import { Items } from "../data.js";
+
 import { productModel } from "../model/productModel.js";
 
 
 export const getProduct = async (req,res)=>{
     try{
        const Items =await productModel.find() 
-       console.log(Items);
        res.json(Items);
+       consol.log(Items);
     }
     catch(e){
 
         console.log("Error in the get Product", e);
     }
+   
     
 }
 
 
+
 export const postProduct = async (req,res)=>{
     try{
-    const {name, price, stock, category, qty, popular}=req.body
+    const {name, price, stock, category, qty, popular}=req.body;
+    const image = req.file.filename;
+    console.log("The image in the postProduct is ", image)
     const product={
         name: name,
         qty: qty,
         popular: popular,
+        image: image,
         category : category,
         price : parseInt(price),
-        stock: parseInt(stock)        
+        stock: parseInt(stock)
+        
     }
     
   const newItem= new productModel(product);
   
   const savedItem = await newItem.save();// Product saved 
-  console.log("Saved Item is : ", savedItem);
+
   
     }
     catch(e){

@@ -3,10 +3,9 @@ import "../../Assets/css/homeContainer.css";
 import HeroBg from "../../Assets/img/heroBg.png";
 import { heroData } from "../../utils/data";
 import { useState, useEffect } from "react";
-import TypeWriterEffect from "react-typewriter-effect";
+import TypeWriterEffect from "typewriter-effect";
 import { Link } from "react-router-dom";
 
-import Typewriter from 'typewriter-effect/dist/core';
 const HomeContainer = () => {
   
    
@@ -20,12 +19,14 @@ const HomeContainer = () => {
           </div>
         </div>
         <p id="delivery-subText">The Fastest Delivery of  <span id="sp">
-            <TypeWriterEffect startDelay={1400} cursorColor="#3F3D56" multiText={
-                ['Fruit', 'Vegitable']
-            } multiTextDelay={1000} typeSpeed={50} multiTextLoop/>
+            <TypeWriterEffect startDelay={1400} cursorColor="#3F3D56" options={{
+    strings: ['Fruits', 'Vegitables'],
+    autoStart: true,
+    loop: true,
+  }}/>
             </span></p>
 
-
+         
       <Link to="/menu">  <button type="button" id="order-btn">Order Now</button></Link>
       </div>
       <div id="cnt2">

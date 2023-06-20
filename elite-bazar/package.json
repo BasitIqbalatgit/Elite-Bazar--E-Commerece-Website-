@@ -5,6 +5,10 @@
   "proxy": "http://localhost:5000",
   "dependencies": {
     "@coreui/react-chartjs": "^2.1.3",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -18,7 +22,6 @@
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
-    "react-typewriter-effect": "^1.1.0",
     "typewriter-effect": "^2.20.1",
     "web-vitals": "^2.1.4"
   },

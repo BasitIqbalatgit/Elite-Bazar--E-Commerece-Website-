@@ -8,8 +8,6 @@ import bodyParser from "body-parser";
 connection.then(()=>{console.log("DB Connected ")}).catch((e)=>{console.log( "Error:", e)})
 
 
-
-
 app.listen(5000,()=>{console.log("Server is running ")})
 
 
@@ -18,5 +16,16 @@ app.use(cors());
 app.use(bodyParser.json({extended:true}));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.json())
-app.use("/product", product)
+app.use("/product", product);
+app.use("/dashboard/db-item",product);
+app.use("/main",product);
+
+app.use('/uploads',express.static('uploads'));
+
+// To catch Error
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  });
+  
 

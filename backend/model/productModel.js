@@ -13,6 +13,10 @@ const productSchema=mongoose.Schema(
             type: Boolean,
             default: false,
           },
+          image:{
+            type:String,
+            require:true,
+          },
          category:String,
          price:Number,
          stock:Number,
