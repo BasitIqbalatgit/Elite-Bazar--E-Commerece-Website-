@@ -48,7 +48,7 @@ function DBItems() {
                     </div>
                 </div>
                 </td>
-            <td>${item.qty * item.price}</td>
+            <td>${item.price}</td>
             <td> <motion.span whileTap={{scale:0.75}} style={{width:"2.5rem",cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center", height:"2.5rem", borderRadius:"50%", backgroundColor:"red" }}>
             <MdDelete style={{color:"black",}} />
            </motion.span></td>

@@ -2,7 +2,7 @@
 import {userModel} from "../model/userModel";
 
 
-export const postUser = async()=>{
+export const postUser = async(req,res)=>{
     try{
         const {userName,email, password}  = req.body
         const user={

@@ -18,6 +18,14 @@ const [{user},dispatch]= useStateValue();
 const nav= useNavigate();
 
 const handleNavigation=(e)=>{
+    const [user,setUser] = useState({
+        userName: "",
+    email:"",
+    password:""
+    });
+
+
+
     e.preventDefault();
     const arr = [RefUserName.current.value, RefEmail.current.value, RefPassword.current.value];
     dispatch({type: actionType.SET_USER,
@@ -31,6 +39,7 @@ const handleNavigation=(e)=>{
 
 useEffect(()=>{
     RefUserName.current.focus();
+    
 },[])
 
 
@@ -77,7 +86,7 @@ useEffect(()=>{
             <button type="submit" className='btn btn-success w-100 mt-2'>SIGN UP</button>
             <div className="form-group form-check mb-2 pad">
                 <label  className='form-check-label'>Already have an Account ? 
-                    <Link to='/login' ><span>Sign in</span></Link>
+                    <Link to='/login' onClick={} ><span>Sign in</span></Link>
                 </label>
             </div>
             </form>

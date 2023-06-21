@@ -20,7 +20,6 @@ function DBNewItem (){
     const [isLoading, setIsLoading] = useState(false);
     const [product, setProduct] = useState({
         name: "",
-        qty: 1,
         popular: true,
         category: "",
         price: "",
@@ -81,7 +80,6 @@ function DBNewItem (){
                 formData.append("name", product.name);
                 formData.append("stock", product.stock);
                 formData.append("price", product.price);
-                formData.append("qty", product.qty);
                 formData.append("category", product.category);
                 formData.append("popular", product.popular);
 

@@ -4,13 +4,14 @@ import axios from "axios";
 const url="http://localhost:5000";
 
 
+//  Product Related API
 export const addProduct = async (Data)=>{
     return await axios.post(`${url}/product`,Data)
 }
 
 
 export const getProduct = async () => {
-    return await axios.get(`${url}/dashboard/db-item`);
+    return await axios.get(`${url}/product`);
   
   }
 
@@ -20,6 +21,7 @@ export const getProduct = async () => {
     return await axios.post(`${url}/user`,Data);
   }
 
+  
 
 
 
