@@ -18,6 +18,7 @@ const MainContainer=()=>{
    
     
     const [Items,setItems] = useState([]);
+    
     useEffect(()=>{
       getItemsDetails();
     },[])
@@ -58,7 +59,7 @@ const MainContainer=()=>{
                         <motion.div whileTap={{scale:0.75}} className="icon-cnt b2" onClick={()=>setScrollValue(scrollValue+200)}><MdChevronRight className="chev-icon"/></motion.div>
                     </div>
                 </div>
-                <RowContainer scrollValue={scrollValue} data={Items.filter(e=>(e.popular===true&&e.category==='vegitable'))} flag={true}/>
+                <RowContainer scrollValue={scrollValue} data={Items.filter(e=>(e.popular===true&&e.category==='Vegatible'))} flag={true}/>
             </section>
             { (cartShow) && (<Cart />)}
             

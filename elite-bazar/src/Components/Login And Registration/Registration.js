@@ -4,43 +4,39 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react';
 
 import videoBackground from '../../Assets/img/background.mp4';
-import { useStateValue } from '../../context/StateProvider';
 import { useRef, useEffect } from 'react';
-import { actionType } from '../../context/reducer';
-
+import { postUser } from '../../Services/api';
 
 const Registration = () => {
-     const RefEmail = useRef();
-     const RefPassword= useRef();
-     
-const RefUserName = useRef();
-const [{user},dispatch]= useStateValue();
-const nav= useNavigate();
-
-const handleNavigation=(e)=>{
     const [user,setUser] = useState({
         userName: "",
     email:"",
     password:""
     });
 
+     const RefEmail = useRef();
+     const RefPassword= useRef();     
+const RefUserName = useRef();
+
+const nav= useNavigate();
 
 
-    e.preventDefault();
-    const arr = [RefUserName.current.value, RefEmail.current.value, RefPassword.current.value];
-    dispatch({type: actionType.SET_USER,
-       
-        user:arr
-    })
+const handleSubmit=async(e)=>{
+    e.preventDefault();    
+console.log(user);
+await postUser(user);
     nav('/login');
 }
 
-    
+const handleChange = (e) => {   
+        setUser({ ...user, [e.target.name]: e.target.value });
+        // console.log(user);
+    }
 
 useEffect(()=>{
     RefUserName.current.focus();
-    
-},[])
+},[]);
+
 
 
   return (
@@ -51,10 +47,10 @@ useEffect(()=>{
       </video>
         <div className='login-div'>
             <h2 className='mb-3 '>Sign Up</h2>
-            <form id='regForm' className='needs-validation' onSubmit={handleNavigation}>
+            <form id='regForm' className='needs-validation'>
             <div className='form-group was-validated mb-2'>
                 <label className='form-label'>User Name</label>
-                <input name='userName' type="text"  className='form-control' required ref={RefUserName}/>
+                <input name='userName' type="text"  className='form-control'onChange={handleChange} required ref={RefUserName}/>
                 <div className='invalid-feedback'>
                     Please Enter Your Name
                 </div> 
@@ -69,24 +65,24 @@ useEffect(()=>{
             
             <div className='form-group was-validated mb-2'>
                 <label className='form-label'>Email Address</label>
-                <input name='email' type="email"  className='form-control' required ref={RefEmail}/>
+                <input name='email' type="email" onChange={handleChange} className='form-control' required ref={RefEmail}/>
                 <div className='invalid-feedback'>
                     Please Enter Your Email
                 </div>
             </div>
             <div className="form-group was-validated  mb-2">
                 <label  className='form-label'>Password</label>
-                <input name='password' type="password" className='form-control' required ref={RefPassword}/>
+               <input name='password' type="password" onChange={handleChange} className='form-control' required ref={RefPassword}/>
                 <div className='invalid-feedback'>
                     Please Enter Your password
                 </div>
             </div>
            
            
-            <button type="submit" className='btn btn-success w-100 mt-2'>SIGN UP</button>
+            <Link to='/login'>  <button type="submit" onClick={e=>handleSubmit(e)} className='btn btn-success w-100 mt-2'>SIGN UP</button></Link>
             <div className="form-group form-check mb-2 pad">
                 <label  className='form-check-label'>Already have an Account ? 
-                    <Link to='/login' onClick={} ><span>Sign in</span></Link>
+                    <Link to='/login'  ><span>Sign in</span></Link>
                 </label>
             </div>
             </form>

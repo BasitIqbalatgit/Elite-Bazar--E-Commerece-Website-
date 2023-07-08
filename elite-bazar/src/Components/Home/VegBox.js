@@ -11,31 +11,36 @@ import { useStateValue } from "../../context/StateProvider";
 import Cart from "../cart/Cart";
 import { useEffect } from "react";
 import Footer from "./Footer";
-
+import { getProduct } from "../../Services/api";
 
 const VegBox=()=>{
     
-const [filter, setFitler] = useState('vegitable');
+const [filter, setFitler] = useState('Vegatible');
 const [Items,setItems] = useState([]);
 
 const categories = [
     {id:1, name:'Fruit'}, 
-    {id:2, name:"vegitable"}];
-        const [{products, cartShow}, dispatch] = useStateValue();
-        useEffect(()=>async()=>{
-            try{
-                const res= await axios.get("http://localhost:5000/product")
-                console.log(res.data);
-                setItems(res.data)
-            }catch(e){
-console.log("Error in veg ",e)
-            }
+    {id:2, name:"Vegatible"}];
+        const [{ cartShow}, dispatch] = useStateValue();
+
+        
            
-            dispatch({type:actionType.SET_PRODUCTS,
-                products:Items
-            });
-            console.log(Items);
-     },[])
+
+    
+        
+        useEffect(()=>{
+          getItemsDetails();
+        },[])
+      
+        const getItemsDetails = async ()=>{
+            const result =  await getProduct();
+            setItems(result.data);
+            console.log(result.data);
+        }
+      
+    
+
+
 
     return(
         
@@ -57,7 +62,7 @@ console.log("Error in veg ",e)
             </div>
             <div style={{width:"100vw"}}>
                     <RowContainer flag={false} 
-                    data={products.filter((n)=> n.category === filter)}
+                    data={Items.filter((n)=> n.category === filter)}
                     
                     />
                 </div>
