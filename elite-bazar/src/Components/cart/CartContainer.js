@@ -19,7 +19,7 @@ const CheckOutContainer=()=>{
     const totalPrice = useMemo(()=>{
         let totalPrice=0;
         cartItems.forEach(item => {
-            totalPrice +=item.qty * item.price;
+            totalPrice += item.price;
         });
         return totalPrice;
     }, [cartItems])
@@ -48,7 +48,7 @@ const CheckOutContainer=()=>{
                 <tr>
                     <td>
                         <div className="cart-info">
-                            <img className="cart-img" src={item.imageSrc} alt="img" />
+                            <img className="cart-img" src={`http://localhost:5000/uploads/${item?.image}`} alt="img" />
                             <div>
                                 <p>{item.decp} </p>
                                 <small>Price : $ {item.price} </small>

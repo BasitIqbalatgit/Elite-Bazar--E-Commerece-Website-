@@ -22,7 +22,6 @@ export const postProduct = async (req,res)=>{
     try{
     const {name, price, stock, category, qty, popular}=req.body;
     const image = req.file.filename;
-    console.log("The image in the postProduct is ", image)
     const product={
         name: name,
         qty: qty,

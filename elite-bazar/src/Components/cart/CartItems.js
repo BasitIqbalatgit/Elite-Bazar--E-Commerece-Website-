@@ -8,7 +8,8 @@ let items=[];
 const CartItems = ({ item, setFlag, flag}) => {
 
     const [{ cartItems }, dispatch] = useStateValue();
-    const [qty, setQty] = useState(item.qty);
+    const [qty, setQty] = useState(1);
+    
 
     const cartDispatch = () => {
         // console.log("item before dispathc ", items);
@@ -54,17 +55,18 @@ const CartItems = ({ item, setFlag, flag}) => {
   
     useEffect(() => {
       items = cartItems;
-    //   console.log("in cartItems" + qty)
+      console.log("in cartItems" + qty)
     }, [qty, items]);
   
   return (
     <div id="cart-items-cart">
-      <img className="cart-img" src={item?.imageSrc} alt="img" />
+      <img className="cart-img" src={`http://localhost:5000/uploads/${item?.image}`} alt="img" />
       <div className="cart-name-div">
         <p className="cart-name-p">{item?.name}</p>
-        <p className="cart-name-p">{item?.decp}</p>
+        <p className="cart-name-p">{item?.category}</p>
         <p className="cart-name-p2">${parseFloat(item?.price) * qty}</p>
       </div>
+
       <div className="button-section-div">
         <motion.div name="min" whileTap={{ scale: 0.75 }} onClick={() => updateQty('sub', item.id)}>
           <MdRemove style={{ color: "rgb(221, 217, 217)", fontSize: "1rem" }} />

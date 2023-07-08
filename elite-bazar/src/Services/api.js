@@ -1,9 +1,11 @@
 import axios from "axios";
+import { MdSouth } from "react-icons/md";
 
 
-const url="http://localhost:5000";
+// const url="https://elitebazar-server.onrender.com";
+const url="http://localhost:5000"
 
-
+// "proxy": "https://elitebazar-server.onrender.com" paste it again in the package.json proxy it is the on.render
 //  Product Related API
 export const addProduct = async (Data)=>{
     return await axios.post(`${url}/product`,Data)
@@ -12,15 +14,26 @@ export const addProduct = async (Data)=>{
 
 export const getProduct = async () => {
     return await axios.get(`${url}/product`);
+    
   
   }
 
   // User Related API
-   
-  export const postUser = async (Data)=>{
-    return await axios.post(`${url}/user`,Data);
-  }
+  export const postUser = async (data) => {
+    console.log("i am in post user", data)
+    return await axios.post(`${url}/user`,data);
+  };
 
+ export const loginUser = async (data) => {
+    console.log("i am in login user", data)
+    return await axios.post(`${url}/user`,data);
+  };
+  
+
+  export const getUser=async ()=>{
+    return await axios.get(`${url}/user`);
+  }
+  
   
 
 

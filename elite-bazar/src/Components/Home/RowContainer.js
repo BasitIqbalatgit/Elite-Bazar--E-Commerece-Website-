@@ -1,4 +1,5 @@
 import React from 'react';
+import "../../Assets/css/rowContainer.css";
 import { MdOutlineStarBorder, MdShoppingBasket, MdStarRate } from "react-icons/md";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
@@ -27,6 +28,7 @@ function RowContainer({ flag, data, scrollValue }) {
     <div
       ref={rowContainerRef}
       style={{
+       
         width: "100%",
         height: "auto",
         margin: "1.7rem 1rem",
@@ -44,13 +46,14 @@ function RowContainer({ flag, data, scrollValue }) {
             <motion.img
               whileHover={{ scale: 1.2 }}
               style={{ width: "10rem", height: "7rem", marginTop: "1.5rem" }}
-              src={`http://localhost:5000/uploads/${fruit.image}`}
+              src={`https://elitebazar-server.onrender.com/uploads/${fruit.image}`}
               alt="img"
             />
 
             <motion.div
               whileTap={{ scale: 0.75 }}
               style={{
+                
                 width: "2.5rem",
                 cursor: "pointer",
                 display: "flex",

@@ -30,6 +30,8 @@ import v12 from "../Assets/img/v12.png";
 import v13 from "../Assets/img/v13.jfif";
 import v14 from "../Assets/img/v14.jfif";
 import v15 from "../Assets/img/v15.png";
+import { useState,useEffect } from "react";
+import { getProduct } from "../Services/api";
 
 import { createContext } from "react";
 import axios from "axios";
@@ -108,6 +110,18 @@ const Items=1;// you have to change it
 const AppContext = createContext();
 
 const AppProvider=({children})=>{
+       
+    const [Items,setItems] = useState([]);
+    useEffect(()=>{
+      getItemsDetails();
+    },[])
+  
+    const getItemsDetails = async ()=>{
+        const result =  await getProduct();
+        setItems(result.data);
+        console.log("i am in the app cnotext",result.data);
+    }
+  
     return(
         <AppContext.Provider value={Items}>
             {children}

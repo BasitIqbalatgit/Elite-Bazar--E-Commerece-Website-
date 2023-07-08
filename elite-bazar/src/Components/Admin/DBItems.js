@@ -31,8 +31,7 @@ function DBItems() {
     <table id="cart-table">
         <tr>
             <th className="thead">Product</th>
-            <th className="thead">Quantity</th>
-            <th className="thead">SubTotal</th>
+            <th className="thead">Price</th>
             <th className="thead">Delete</th>
         </tr>
         {Items &&
@@ -41,10 +40,10 @@ function DBItems() {
         <tr>
             <td>
                 <div className="cart-info">
-                    <img className="cart-img" src={`/uploads/${item.image}`} alt="img" />
+                    <img className="cart-img" src={`https://elitebazar-server.onrender.com/uploads/${item.image}`} alt="img" />
                     <div>
                         <p>{item.category} </p>
-                        <small>Price : $ {item.price} </small>
+                        <small>Name : $ {item.name} </small>
                     </div>
                 </div>
                 </td>
