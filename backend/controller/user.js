@@ -1,6 +1,12 @@
 import {userModel} from "../model/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+
+import dotenv from "dotenv";
+
+dotenv.config();
+
+
 export const postUser = async(req,res)=>{
     try{      
 
@@ -55,7 +61,7 @@ try{
     const userLogin = await userModel.findOne({email: email});
 
 
-    // console.log("in LoginUser Controller", userLogin);
+    console.log("in LoginUser Controller", userLogin);
 
     if(!userLogin)
     {
@@ -64,12 +70,19 @@ try{
     else{
         const isMatch = await bcrypt.compare(password, userLogin.password);
         // jwt token
-            const jwt = 
+           
         if(isMatch){
-            res.json({message:"user Login Successfull"})
+            const token = jwt.sign({email: userLogin.email}, process.env.SECRETE_KEY);
+            // const token = userLogin.generateAuthToken();
+            
+            res.cookie("jwt_token",token,{
+                expires:new Date(Date.now() + 25892000000),
+                httpOnly: true
+            })
+            res.json({message:"user Login Successfull", user: token})
         }
         else{
-            res.status(400).json({error: "Invalid Credentials"});
+            res.status(400).json({error: "Invalid Credentials", user: false});
         }
         
     }
@@ -80,3 +93,20 @@ try{
 }
 
 }
+
+
+export const isAuthorized = async(req,res)=>{
+    const token = req.header['x-access-token'];
+    try{
+        
+        const decoded = jwt.verify(token, process.env.SECRETE_KEY);
+        const email = decoded.email;
+        const user = await userModel.findOne({email : eamil});
+        
+        return{message:"OK", quote : user.quote}
+    }catch(err){
+        console.log(err)
+        res.json({message: "Error", error: "invalid token"})
+    }
+    
+    }
