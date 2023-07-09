@@ -21,12 +21,12 @@ export const getProduct = async () => {
   // User Related API
   export const postUser = async (data) => {
     console.log("i am in post user", data)
-    return await axios.post(`${url}/user/register`,data);
+    return await axios.post(`${url}/user`,data);
   };
 
  export const loginUser = async (data) => {
     console.log("i am in login user", data)
-    return await axios.post(`${url}/user/login`,data);
+    return await axios.post(`${url}/user`,data);
   };
   
 
