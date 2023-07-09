@@ -21,15 +21,18 @@ export const getProduct = async () => {
   // User Related API
   export const postUser = async (data) => {
     console.log("i am in post user", data)
-    return await axios.post(`${url}/user`,data);
+    return await axios.post(`${url}/user/register`,data);
   };
 
  export const loginUser = async (data) => {
     console.log("i am in login user", data)
-    return await axios.post(`${url}/user`,data);
+    return await axios.post(`${url}/user/login`,data);
   };
   
-
+  export const decodeToken = async (data) => {
+    console.log("i am in login user", data)
+    return await axios.post(`${url}/user/decodeToken`,data);
+  };
   export const getUser=async ()=>{
     return await axios.get(`${url}/user`);
   }
@@ -70,3 +73,5 @@ export const insertform = async (Data) => {
   export const deleteUsers = async (id) =>{
     return await axios.delete(`${url}/ADMIN/${id}`)
   }
+
+

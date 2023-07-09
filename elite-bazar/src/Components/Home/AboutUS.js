@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../../Assets/css/AboutUs.css';
 import Footer from './Footer';
 import Header from './Header';
@@ -7,8 +7,24 @@ import bk2 from "../../Assets/img/frBasket.png";
 import bk3 from "../../Assets/img/vegHerb.png";
 import Cart from '../cart/Cart';
 import f3 from "../../Assets/img/f3.png";
-const AboutUs = () => {
+import {  useNavigate } from 'react-router-dom';
 
+
+const AboutUs = () => {
+  const nav = useNavigate();
+  useEffect(async ()=>{
+    const token = localStorage.getItem('token');
+    
+    
+    if(token){
+      const user = await decodeToken(token);
+      console.log(user);
+        if(!user){
+          localStorage.removeItem('token');
+          nav("/")
+        }
+    }
+  },[])
 
 
   return (
