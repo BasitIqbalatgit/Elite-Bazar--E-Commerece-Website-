@@ -96,21 +96,7 @@ try{
 }
 
 
-// export const isAuthorized = async(req,res)=>{
-//     const token = req.header['x-access-token'];
-//     try{
-        
-//         const decoded = jwt.verify(token, process.env.SECRETE_KEY);
-//         const email = decoded.email;
-//         const user = await userModel.findOne({email : email});
-        
-//         return{message:"OK", quote : user.quote}
-//     }catch(err){
-//         console.log(err)
-//         res.json({message: "Error", error: "invalid token"})
-//     }
-    
-//     }
+
 
 
 
@@ -120,7 +106,7 @@ try{
             const decoded = jwt.verify(token,process.env.SECRETE_KEY);
             const email = decoded.email;
             const user = await userModel.findOne({email : email});
-            return{message:"OK", user:user}    
+            return res.json({message:"OK", user:user});  
         }catch(err){
             console.log(err)
             res.json({message:"Error", error:"invalid token"})

@@ -6,6 +6,6 @@ const router = express.Router();
 router.post("/register", postUser);
 router.post("/login", loginUser);
 router.get("/", getUser);
-router.post("/docodeToken",decodeToken);
+router.get("/docodeToken",decodeToken);
 
 export default router;

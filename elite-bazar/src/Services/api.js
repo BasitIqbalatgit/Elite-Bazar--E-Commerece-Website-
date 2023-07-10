@@ -13,10 +13,19 @@ export const addProduct = async (Data)=>{
 
 
 export const getProduct = async () => {
-    return await axios.get(`${url}/product`);
-    
+    return await axios.get(`${url}/product`);   
   
   }
+
+
+  export const deleteProduct = async (id) =>{
+    return await axios.delete(`${url}/product/${id}`)
+  }
+
+  export const updateProduct = async (id, data) => {
+    return await axios.put(`${url}/product/${id}`, data);
+  }
+
 
   // User Related API
   export const postUser = async (data) => {
@@ -30,7 +39,7 @@ export const getProduct = async () => {
   };
   
   export const decodeToken = async (data) => {
-    console.log("i am in login user", data)
+    console.log("i am in decode Token", data)
     return await axios.post(`${url}/user/decodeToken`,data);
   };
   export const getUser=async ()=>{
@@ -70,8 +79,5 @@ export const insertform = async (Data) => {
   
   
   }
-  export const deleteUsers = async (id) =>{
-    return await axios.delete(`${url}/ADMIN/${id}`)
-  }
-
+  
 
